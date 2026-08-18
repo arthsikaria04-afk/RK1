@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>RK | Beverage Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">RK</span><div><strong>RK</strong><small>Beverage Store</small></div></div>
+    <button class="admin-btn" onclick="toggleAdmin()">Manage Products</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">REFRESH • RECHARGE • REPEAT</p>
+        <h1>Your favourite beverages,<br><span>all in one place.</span></h1>
+        <p class="hero-text">Browse our drinks and check prices instantly.</p>
+        <a class="cta" href="#products">View Products ↓</a>
+      </div>
+      <div class="hero-art">🥤</div>
+    </section>
+
+    <section id="products" class="products-section">
+      <div class="section-head">
+        <div><p class="eyebrow">OUR COLLECTION</p><h2>Products</h2></div>
+        <input id="search" class="search" placeholder="Search drinks..." oninput="renderProducts()">
+      </div>
+      <div id="productsGrid" class="grid"></div>
+      <div id="empty" class="empty" hidden>No products yet. Add your first product from <b>Manage Products</b>.</div>
+    </section>
+  </main>
+
+  <section id="adminPanel" class="admin-panel" hidden>
+    <div class="admin-card">
+      <div class="admin-head"><div><p class="eyebrow">STORE MANAGER</p><h2>Manage Products</h2></div><button class="close" onclick="toggleAdmin()">×</button></div>
+      <form id="productForm">
+        <input type="hidden" id="editId">
+        <label>Product name<input id="name" required placeholder="e.g. Coca-Cola 750ml"></label>
+        <div class="two">
+          <label>Price (₹)<input id="price" required type="number" min="0" step="0.01" placeholder="50"></label>
+          <label>Category<input id="category" placeholder="Cold Drinks"></label>
+        </div>
+        <label>Product photo<input id="photo" type="file" accept="image/*"></label>
+        <img id="preview" class="preview" alt="Preview" hidden>
+        <div class="form-actions"><button type="button" class="secondary" onclick="resetForm()">Clear</button><button class="primary" type="submit">Save Product</button></div>
+      </form>
+      <div class="manage-list">
+        <h3>Saved Products</h3>
+        <div id="manageList"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><strong>RK</strong> · Beverage Store <span>© <span id="year"></span></span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
